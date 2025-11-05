@@ -1,0 +1,103 @@
+.privacy-policy {
+  min-height: 100vh;
+  background-color: #F2F2F2;
+  background-image: none !important;
+  position: relative; /* required for overlay */
+  background-image: url('/bgmobile.webp');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.privacy-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  line-height: 1.6;
+}
+
+.privacy-policy h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: #222;
+  text-align: center;
+}
+
+.last-updated {
+  text-align: center;
+  color: #666;
+  margin-bottom: 3rem;
+  font-style: italic;
+}
+
+.privacy-policy section {
+  margin-bottom: 2.5rem;
+}
+
+.privacy-policy h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #222;
+  border-bottom: 1.5px solid #666;
+  padding-bottom: 0.5rem;
+}
+
+.privacy-policy p {
+  margin-bottom: 1rem;
+  color: #222;
+}
+
+.privacy-policy ul {
+  margin-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.privacy-policy li {
+  margin-bottom: 0.5rem;
+  color: #222;
+}
+
+.privacy-policy strong {
+  color: #000;
+}
+
+.privacy-policy a {
+  color: #4CAF50;
+  text-decoration: none;
+}
+
+.privacy-policy a:hover {
+  text-decoration: underline;
+}
+
+/* Programmatic grain */
+.privacy-policy::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.4;
+  background-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='200'%20height='200'%3E%3Cfilter%20id='n'%3E%3CfeTurbulence%20type='fractalNoise'%20baseFrequency='0.8'%20numOctaves='2'%20seed='3'%20stitchTiles='stitch'/%3E%3C/filter%3E%3Crect%20width='100%25'%20height='100%25'%20filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 200px 200px;
+}
+
+/* Ensure content sits above overlay */
+.privacy-policy > * {
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 768px) {
+  .privacy-container {
+    padding: 0 1rem;
+  }
+  .privacy-policy {
+    background-image: none !important; /* override mobile bg */
+  }
+
+  .privacy-policy::before {
+    background-size: 160px 160px;
+  }
+}

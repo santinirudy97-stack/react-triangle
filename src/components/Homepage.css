@@ -1,0 +1,1123 @@
+/* Mobile styles for client logos */
+@media (max-width: 768px) {
+  .client-logo {
+    height: 20px !important;
+    margin: 1rem !important;
+  }
+}:root {
+  /* spacing + component variables */
+  --space-sm: 1.5rem;   /* small gaps */
+  --space-md: 3rem;     /* medium gaps */
+  --space-lg: 4.5rem;   /* section breaks (min) */
+  --space-xl: 6rem;     /* section breaks (max) */
+  --space-xxl: 7.5rem;  /* major transitions */
+
+  --logo-height: 34px;
+  --logo-gap: 3rem;           /* spacing between logos: 2.5–3rem → 3rem */
+  --marquee-duration: 30s;
+  --marquee-fade: 180px;
+
+  --card-radius: 12px;
+  --card-gap: 3rem;           /* horizontal spacing between cards: 2.5–3rem → 3rem */
+  --card-aspect: 1.618;
+  --page-gutter: 32px;
+
+  /* Flip animation controls */
+  --flip-duration: 1200ms;                   /* try 800ms–1200ms for slower flip */
+  --flip-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  /* Front card logo size */
+  --card-logo-size: 34px; /* adjust smaller/larger as you like */
+}
+
+/* Mobile-first responsive variables */
+
+.homepage {
+  min-height: 100vh;
+  background-color: #F2F2F2;
+  background-attachment: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;       /* center horizontally */
+  padding: 60px 0 0 0;           /* add top padding for sticky header */
+  position: relative;            /* needed for the overlay */
+}
+
+/* Programmatic grain: SVG fractal noise tiled as a background */
+.homepage::before {
+  content: '';
+  position: fixed; /* Keep the grain fixed */
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.4; /* grain strength: try 0.04–0.08 */
+  background-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='200'%20height='200'%3E%3Cfilter%20id='n'%3E%3CfeTurbulence%20type='fractalNoise'%20baseFrequency='0.8'%20numOctaves='2'%20seed='3'%20stitchTiles='stitch'/%3E%3C/filter%3E%3Crect%20width='100%25'%20height='100%25'%20filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 200px 200px; /* tile size: try 160–320 */
+}
+
+/* Ensure content sits above the overlay */
+.homepage > * {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-content {
+  /* center + layout */
+  max-width: min(1600px, 95vw);
+  max-width: none;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  padding: 4rem var(--page-gutter) 0;
+  text-align: left;
+  align-items: flex-start;
+  justify-content: center;
+  margin: 0 auto;
+  padding: 4rem var(--page-gutter) 0;          /* bottom = 0 to keep 3rem gap to next section */
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+}
+
+.company-logo {
+  margin-bottom: 0rem;
+  text-align: left;
+}
+
+.logo-image {
+  max-height: 120px;
+  width: auto;
+}
+
+.opening-paragraph {
+  margin-bottom: 5rem; /* Space before hero text */
+  text-align: justify;
+  max-width: 1200px;
+}
+
+.opening-paragraph p {
+  font-family: 'Inter Tight', sans-serif;
+  font-weight: 300;
+  font-size: 1.8rem;
+  line-height: 1.2;
+  color: #231F20;
+  margin: 0;
+}
+
+.opening-paragraph strong {
+  font-weight: 600;
+}
+
+.hero-text {
+  margin-bottom: var(--space-sm); /* Increased from var(--space-md) to create more space */
+  text-align: left;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+}
+
+.main-heading {
+  font-family: 'Inter Tight', sans-serif;
+  font-weight: 700;       /* H1 weight: 700 */
+  font-size: 3rem;        /* H1 size: 48px */
+  line-height: 1.15;      /* H1 line height: 1.1–1.2 */
+  color: #231F20;
+  margin-bottom: 2rem;    /* spacing to subheading (2rem) */
+  max-width: 900px;
+  text-align: center;
+}
+
+.description {
+  font-family: 'Inter Tight', sans-serif;
+  font-weight: 400; /* Make base light */       
+  font-size: 8rem;
+  line-height: 1.1;
+  color: #231F20;
+  max-width: 95rem;
+  text-align: left;
+  margin-left: 0;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+}
+
+/* Responsive font size for smaller screens */
+@media (max-width: 1200px) {
+  .description {
+    font-size: 6rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .description {
+    font-size: 4rem;
+  }
+}
+
+.description .years-count,
+.description .rotating-word {
+  font-weight: 700; /* Make specific elements bold */
+}
+
+.description .anni-di {
+  font-weight: 300 !important; /* More specific selector */
+}
+
+.years-count {
+  font-weight: 700;
+}
+
+.rotating-word {
+  display: inline-block;
+  font-weight: 700;
+  text-transform: uppercase;
+  animation: word-fade 0ms ease both;
+  will-change: opacity, transform;
+  white-space: nowrap; /* Ensure the rotating word stays on one line */
+  margin-top: -0.5rem; /* Reduce space between lines */
+}
+
+@keyframes word-fade {
+  from { opacity: 0; transform: translateY(0px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.clients-section {
+  margin-top: 0;
+  margin-bottom: 18rem;
+  text-align: center;
+}
+
+.clients-label {
+  font-family: 'Inter Tight', sans-serif;
+  font-weight: 600;
+  font-size: 1.4rem;
+  color: #231F20;
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.clients-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.client-logo {
+  margin: 2rem;
+  height: 45px;
+  width: auto;
+  max-width: 100%;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  object-fit: contain;
+}
+
+.scroll-indicator {
+  margin-top: 12rem;
+  text-align: center;
+}
+
+.scroll-indicator p {
+  font-family: 'Inter Tight', sans-serif;
+  font-weight: 600;
+  font-size: 1.4rem;
+  color: #231F20;
+  margin: 0;
+}
+
+.client-logo {
+  height: 45px;
+  width: auto;
+  max-width: 100%;
+  opacity: 0.8;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  object-fit: contain;
+}
+
+
+
+/* CONSOLIDATED MOBILE STYLES - Single 768px breakpoint */
+@media (max-width: 768px) {
+  .homepage {
+    padding: 60px 0 0 0;
+    overflow-x: hidden;
+    background-color: #F2F2F2;
+    background-image: none !important; /* override any previous background images */
+  }
+
+  .homepage::before {
+    background-size: 160px 160px; /* slightly tighter grain on mobile */
+    opacity: 0.4;
+  }
+  
+  .hero-content {
+    padding: 2rem var(--page-gutter) 0;
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100vw;
+  }
+  
+  .opening-paragraph {
+    max-width: calc(100vw - 2 * var(--page-gutter));
+    margin-left: 0;
+    margin-right: 0;
+  }
+  
+  .opening-paragraph p {
+    font-size: 1.2rem;
+    line-height: 1.4;
+  }
+  
+  .main-heading {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 1rem;
+    font-weight: 600;
+    word-break: break-word;
+    hyphens: auto;
+  }
+  
+  .description {
+    font-size: 1.8rem !important;
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    line-height: 0.85;
+    font-weight: 700;
+    word-break: break-word;
+    hyphens: auto;
+    overflow-wrap: break-word;
+    overflow-x: hidden;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+    text-decoration: none !important;
+    text-decoration-line: none !important;
+    text-decoration-style: none !important;
+    text-decoration-color: transparent !important;
+    text-underline-offset: 0 !important;
+    -webkit-text-decoration-line: none !important;
+    -webkit-text-decoration-style: none !important;
+    -webkit-text-decoration-color: transparent !important;
+  }
+  
+  .rotating-word {
+    font-size: 2.5rem !important;
+    display: block;
+    margin-top: 0.5rem;
+    font-weight: 700;
+    hyphens: auto;
+    overflow-wrap: break-word;
+    overflow-x: hidden;
+    caret-color: transparent;
+    user-select: none;
+    -webkit-user-select: none;
+    outline: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+    position: relative !important;
+    overflow: hidden !important;
+  }
+  
+  .rotating-word::before,
+  .rotating-word::after {
+    content: none !important;
+    display: none !important;
+  }
+  
+  .clients-grid {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 2rem 1.5rem;
+    padding: 0.5rem;
+  }
+  
+  .client-logo {
+    height: 35px;
+  }
+  
+  /* Recent Productions - Full width stacked on mobile */
+  .recent-productions {
+    padding-inline: 0;
+    margin-left: 0;
+    margin-right: 0;
+    width: 100vw;
+    margin-left: calc(-1 * var(--page-gutter));
+    margin-right: calc(-1 * var(--page-gutter));
+  }
+  
+  .recent-title {
+    padding: 0 var(--page-gutter)!important;
+    margin-bottom: 1.5rem;
+  }
+  
+  .production-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 0 var(--page-gutter);
+  }
+  
+  .production-card {
+    aspect-ratio: 1 / 1.618 !important;
+    width: 100% !important;
+    min-height: 400px !important;
+    max-width: none !important;
+    display: block !important;
+    position: relative !important;
+    overflow: hidden !important;
+    border-radius: var(--card-radius) !important;
+    background: transparent !important;
+    cursor: pointer !important;
+    -webkit-tap-highlight-color: transparent !important;
+    -webkit-touch-callout: none !important;
+    -webkit-user-select: none !important;
+    -moz-user-select: none !important;
+    -ms-user-select: none !important;
+    user-select: none !important;
+    outline: none !important;
+    border: none !important;
+  }
+  
+  .production-card .card-inner {
+    position: relative !important;
+    width: 100% !important;
+    height: 100% !important;
+    border-radius: inherit !important;
+    transform-style: flat !important;
+    -webkit-transform-style: flat !important;
+    transition: none !important;
+    transform: none !important;
+  }
+  
+  .production-card.is-flipped .card-inner {
+    transform: none !important;
+  }
+  
+  .production-card .card-face {
+    position: absolute !important;
+    inset: 0 !important;
+    border-radius: inherit !important;
+    overflow: hidden !important;
+    transition: opacity 0.5s ease !important;
+    backface-visibility: visible !important;
+    -webkit-backface-visibility: visible !important;
+  }
+  
+  .production-card .front {
+    opacity: 1 !important;
+    z-index: 2 !important;
+  }
+  
+  .production-card .back {
+    opacity: 0 !important;
+    z-index: 1 !important;
+    transform: none !important;
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%) !important;
+  }
+  
+  .production-card.is-flipped .front {
+    opacity: 0 !important;
+  }
+  
+  .production-card.is-flipped .back {
+    opacity: 1 !important;
+  }
+  
+  .production-card .front .card-image {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    z-index: 0 !important;
+  }
+  
+  .production-card .front .card-title {
+    position: absolute !important;
+    font-size: 1.4rem !important;
+    top: 15px !important;
+    left: 25px !important;
+    color: #ffffff !important;
+    font-weight: 600 !important;
+    z-index: 2 !important;
+  }
+
+  .production-card .front .card-desc {
+    position: absolute !important;
+    font-size: 1.2rem !important;
+    left: 25px !important;
+    bottom: 25px !important;
+    max-width: 80% !important;
+    line-height: 1.3 !important;
+    color: #EEEFEF !important;
+    z-index: 2 !important;
+  }
+
+  .production-card .front .card-logo {
+    position: absolute !important;
+    width: 45px !important;
+    bottom: 20px !important;
+    right: 25px !important;
+    z-index: 2 !important;
+  }
+  
+  .production-card .back .card-title {
+    position: absolute !important;
+    font-size: 1.4rem !important;
+    top: 15px !important;
+    left: 25px !important;
+    color: #ffffff !important;
+    font-weight: 600 !important;
+    z-index: 2 !important;
+  }
+  
+  .production-card .back .back-content {
+    position: absolute !important;
+    top: 65px !important;
+    left: 25px !important;
+    right: 25px !important;
+    color: #ffffff !important;
+    z-index: 2 !important;
+    text-align: left !important;
+  }
+  
+  .production-card .back .meta-line {
+    font-size: 1rem !important;
+    margin-bottom: 8px !important;
+    color: #EEEFEF !important;
+    opacity: 0.9 !important;
+    text-align: left !important;
+  }
+  
+  .production-card .back .card-desc {
+    font-size: 0.8rem !important;
+    margin-top: 20px !important;
+    line-height: 1.4 !important;
+    color: #EEEFEF !important;
+    opacity: 0.9 !important;
+  }
+  
+  .production-card .back .card-logo {
+    position: absolute !important;
+    width: 45px !important;
+    bottom: 20px !important;
+    right: 25px !important;
+    z-index: 2 !important;
+  }
+  
+  .production-card .back {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%) !important;
+  }
+}
+
+/* Smaller mobile screens */
+@media (max-width: 480px) {
+  .main-heading {
+    font-size: 2rem;
+  }
+  
+  .description {
+    font-size: 3rem;
+  }
+  
+  .rotating-word {
+    font-size: 3rem;
+  }
+  
+  .clients-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem 1rem;
+    padding: 0.5rem;
+  }
+  
+  .client-logo {
+    height: 30px;
+  }
+  
+  .production-grid {
+    gap: 1.5rem;
+  }
+  
+  .production-card {
+    min-height: 180px;
+  }
+  
+  .production-card .front .card-title {
+    font-size: 2rem;
+  }
+  
+  .production-card .front .card-desc {
+    font-size: 1.1rem;
+  }
+  
+  .production-card .back .card-title {
+    font-size: 1.8rem;
+  }
+  
+  .production-card .back .meta-line {
+    font-size: 1.2rem;
+  }
+  
+  .production-card .back .card-desc {
+    font-size: 1.1rem;
+  }
+}
+
+  
+  .production-card .front .card-logo {
+    width: 40px;
+    bottom: 16px;
+  }
+  
+  .production-card .back .card-title {
+    font-size: 1.8rem;
+    top: 4px;
+    left: 14px;
+  }
+  
+  .production-card .back .back-content {
+    top: 70px;
+    left: 20px;
+    right: 20px;
+  }
+  
+  .production-card .back .meta-line {
+    font-size: 1.2rem;
+  }
+  
+  .production-card .back .card-desc {
+    font-size: 1.1rem;
+    margin-top: 15px;
+  }
+  
+  .production-card .back .card-logo {
+    width: 40px;
+    bottom: 16px;
+  }
+
+
+/* Top row → left, faster speed */
+.marquee-track.left {
+  animation: scroll-left 14s linear infinite;
+}
+
+/* Bottom row → right, also infinite */
+.marquee-track.right {
+  animation: scroll-right 14s linear infinite;
+}
+
+/* Direction-specific keyframes (seamless with duplicated logo set) */
+@keyframes scroll-left {
+  0%   { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-50%, 0, 0); }
+}
+
+@keyframes scroll-right {
+  0%   { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(50%, 0, 0); }
+}
+
+/* Logos: prevent end gaps that cause jumps */
+.client-logo {
+  max-height: 40px;
+  width: auto;
+  opacity: 1 !important;
+  transition: none !important;
+}
+
+
+
+@keyframes clients-marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+
+
+/* Two-line clients marquee: tighter spacing between rows */
+.single-marquee.double {
+  gap: 0.75rem; /* reduce separation between the two rows */
+}
+
+/* Marquee container: full-bleed with extra spacing between rows */
+.clients-marquee {
+  overflow: hidden;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem; /* Reduced gap between the two logo lines */
+  padding: 0.5rem 0;
+}
+
+/* Each row hosts two synchronized tracks */
+.marquee-row {
+  position: relative;
+  width: 100%;
+  height: var(--logo-height, 44px);
+  overflow: hidden;
+  /* Edge fade: transparent → opaque → transparent */
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    #000 var(--marquee-fade),
+    #000 calc(100% - var(--marquee-fade)),
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    #000 var(--marquee-fade),
+    #000 calc(100% - var(--marquee-fade)),
+    transparent 100%
+  );
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+}
+
+.track {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  display: inline-flex;
+  white-space: nowrap;
+  width: max-content;
+  padding-inline: var(--logo-gap);
+  will-change: transform;
+  transform: translateZ(0);
+  padding-inline: 0;               /* avoid boundary seam */
+  /* remove gap to avoid seam created by double spacing at the join */
+  /* gap: 2rem; */                   /* <-- remove this if present */
+}
+
+/* Top row → left, Bottom row → right */
+.track.left  { animation: reset-left var(--marquee-duration) linear infinite; }
+.track.right { animation: reset-right var(--marquee-duration) linear infinite; }
+@keyframes reset-left  { 0% { transform: translate3d(0,0,0); } 100% { transform: translate3d(-100%,0,0); } }
+@keyframes reset-right { 0% { transform: translate3d(-100%,0,0); } 100% { transform: translate3d(0,0,0); } }
+@keyframes track-left        { 0% { transform: translate3d(0, 0, 0); }    100% { transform: translate3d(-100%, 0, 0); } }
+@keyframes track-left-clone  { 0% { transform: translate3d(100%, 0, 0); }  100% { transform: translate3d(0, 0, 0); } }
+
+@keyframes track-right       { 0% { transform: translate3d(0, 0, 0); }    100% { transform: translate3d(100%, 0, 0); } }
+@keyframes track-right-clone { 0% { transform: translate3d(-100%, 0, 0); } 100% { transform: translate3d(0, 0, 0); } }
+@keyframes track-left        { 0% { transform: translateX(0%); }    100% { transform: translateX(-100%); } }
+@keyframes track-left-clone  { 0% { transform: translateX(100%); }   100% { transform: translateX(0%); } }
+
+@keyframes track-right       { 0% { transform: translateX(0%); }    100% { transform: translateX(100%); } }
+@keyframes track-right-clone { 0% { transform: translateX(-100%); } 100% { transform: translateX(0%); } }
+
+/* Logos: full color, fixed height, controlled spacing */
+/* Logo sizing and spacing */
+/* Logos: fixed height + spacing via margin (no track padding) */
+.client-logo {
+  height: var(--logo-height, 44px);
+  width: auto;
+  display: inline-block;
+  margin: 0;                /* spacing handled by track gap */
+  opacity: 1 !important;
+  transition: none !important;
+}
+/* Last item in the line without extra gap */
+.track .client-logo:last-child {
+  margin-right: 0;
+}
+
+/* Gap at the loop join equals the regular logo spacing */
+.clients-marquee .track .client-logo:first-child {
+  margin-left: var(--logo-gap);
+}
+
+.clients-marquee .track .client-logo:last-child {
+  margin-right: 0;
+}
+
+/* Avoid double-gap at the seam between original and clone */
+.track .client-logo:last-child {
+  margin-right: 0;
+}
+
+/* Direction + duration */
+.track.left        { animation: track-left var(--marquee-duration) linear infinite; }
+.track.left.clone  { animation: track-left-clone var(--marquee-duration) linear infinite; }
+
+.track.right       { animation: track-right var(--marquee-duration) linear infinite; }
+.track.right.clone { animation: track-right-clone var(--marquee-duration) linear infinite; }
+
+/* Keyframes: seamless handoff */
+/* Single-row continuous marquee (scoped to avoid old rules) */
+.single-marquee .marquee-row {
+  position: relative;
+  width: 100%;
+  height: var(--logo-height, 44px);
+  overflow: hidden;
+  contain: layout paint;           /* prevents reflow jitter inside the row */
+  /* edge fade (keep your current mask rules here) */
+}
+/* Keep uniform spacing between tracks with a single spacer */
+.single-marquee .track {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  width: max-content;
+  will-change: transform;
+  transform: translateZ(0);
+  gap: var(--logo-gap);
+  padding-inline: 0;
+}
+.single-marquee .track::after {
+  content: '';
+  display: block;
+  width: 0;                 /* no spacer; seam equals gap only */
+  flex: 0 0 0;
+  height: 1px;
+}
+.single-marquee .track .client-logo:first-child {
+  margin-left: 0;           /* prevent extra offset at the handoff */
+}
+.single-marquee .track .client-logo:first-child {
+  margin-left: 0;           /* prevent extra offset at the handoff */
+}
+/* Recent Productions */
+.recent-productions {
+  /* make this section full-bleed like the marquee */
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  padding-inline: var(--page-gutter);
+  margin-top: var(--space-md);     /* 6rem from marquee to cards */
+  margin-bottom: 20rem;  /* 6rem from cards to TimelineSection */
+}
+
+.recent-title {
+  font-family: 'Inter Tight', sans-serif;
+  font-weight: 600;
+  font-size: 1.2rem;
+  line-height: 1.2;
+  color: #231F20;
+  margin-bottom: 1rem;
+  text-align: left;
+  padding-left: var(--page-gutter);
+  margin-left: calc(-1 * var(--page-gutter));
+}
+
+.production-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr)); /* four cards fill width */
+  gap: var(--card-gap); /* spacing between cards */
+  width: 100%;
+}
+
+/* MOBILE OVERRIDE FOR PRODUCTION GRID */
+@media (max-width: 768px) {
+  .production-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    grid-template-columns: none !important;
+    gap: 2rem !important;
+    padding: 0 !important;
+  }
+}
+
+:root {
+  --logo-height: 36px;
+  --logo-gap: 3rem;
+  --marquee-duration: 30s;
+  --marquee-fade: 180px;
+  --card-radius: 2px;
+  --card-gap: 1.5rem;
+  --card-aspect: 1.618;
+  --page-gutter: 2rem;
+
+  /* Inner shadow tuning */
+  --card-top-fade: 25%;            /* height of top fade */
+  --card-bottom-fade: 25%;         /* height of bottom fade */
+  --card-shadow-opacity: 0.85;     /* darkness of fades */
+}
+
+
+.production-card {
+  position: relative;
+  overflow: visible;                 /* allow 3D without clipping */
+  border-radius: var(--card-radius);
+  aspect-ratio: 1 / var(--card-aspect);
+  background: transparent;
+  perspective: 1000px;               /* 3D perspective for flip */
+  transition: transform 200ms ease, box-shadow 200ms ease;
+  isolation: isolate;
+  cursor: pointer;
+}
+/* Card flip inner (keep slower duration if set) */
+.production-card .card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  transition: transform var(--flip-duration, 1200ms) var(--flip-ease, cubic-bezier(0.22, 1, 0.36, 1));
+  will-change: transform;
+}
+.production-card.is-flipped .card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Ensure proper 3D stacking and face visibility */
+.production-card .card-face {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  overflow: hidden;
+}
+
+/* Front (existing content) */
+.production-card .front .card-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  transition: transform 400ms ease; /* enable smooth zoom */
+  transform-origin: center;
+  will-change: transform;
+  transform: scale(1);             /* baseline so hover scales from 1 */
+  transform-style: preserve-3d;
+}
+.production-card .front .card-title {
+  position: absolute;
+  top: 4px;
+  left: 14px;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 1.8rem;
+  letter-spacing: 0.2px;
+  z-index: 2;
+}
+
+
+
+.production-card .front .card-desc {
+  position: absolute;
+  left: 14px;
+  bottom: 14px;
+  color: #EEEFEF;
+  opacity: 0.9;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.2;
+  max-width: 90%;
+  text-align: left;
+  z-index: 2;
+}
+/* Front logo overlay: bottom-center, above fades */
+.production-card .front .card-logo {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: var(--card-logo-size);
+  height: auto;
+  z-index: 2;
+  pointer-events: none;
+}
+.production-card .front::before,
+.production-card .front::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+.production-card .front::before {
+  top: 0;
+  height: var(--card-top-fade);
+  background: linear-gradient(to bottom, rgba(0,0,0,var(--card-shadow-opacity)) 0%, rgba(0,0,0,0) 100%);
+}
+.production-card .front::after {
+  bottom: 0;
+  height: var(--card-bottom-fade);
+  background: linear-gradient(to top, rgba(0,0,0,var(--card-shadow-opacity)) 0%, rgba(0,0,0,0) 100%);
+}
+
+/* Back (specs) */
+.production-card .back {
+  transform: rotateY(180deg);
+  background: transparent;           /* show the back image instead of solid bg */
+  color: #EEEFEF;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 1rem;
+  gap: 0.75rem;
+}
+/* Back content — anchor under title and align left */
+.production-card .back {
+  text-align: left;
+}
+/* Back title remains absolute at top-left */
+.production-card .back .back-title {
+  font-weight: 600;
+  font-size: 1.25rem;
+  line-height: 1.3;
+  z-index: 3;
+}
+.production-card .back .specs-list {
+  margin: 0;
+  padding-left: 1rem;
+  font-size: 1rem;
+  line-height: 1.6;
+  list-style: disc;
+  z-index: 3;
+}
+
+.production-card .back .card-logo {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: var(--card-logo-size, 72px); /* same variable, with fallback */
+  height: auto;
+  opacity: 0.9;
+  z-index: 2;            /* above back image */
+  pointer-events: none;
+}
+
+.production-card .back .back-note {
+  margin-top: auto;
+  font-size: 0.9rem;
+  opacity: 0.7;
+  z-index: 3;
+}
+.production-card .back .back-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;                        /* image behind text */
+  transition: transform 400ms ease;  /* consistent with front */
+  transform-origin: center;
+  transform: scale(1);
+}
+.production-card:hover .back .back-image {
+  transform: scale(1.04);            /* optional: mirror gentle zoom on back */
+}
+.production-card:hover .front .card-image {
+  transform: scale(1.04);          /* zoom image by ~4% on hover */
+}
+
+/* Title/description overlays — applied to both faces */
+.production-card .card-title,
+.production-card .card-desc {
+  position: absolute;
+  z-index: 2;                /* above image */
+  transform: translateZ(1px);/* force front-most in 3D */
+}
+
+/* Placement + styling (mirrors front) */
+.production-card .card-title {
+  top: 4px;
+  left: 14px;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 1.8rem;
+  letter-spacing: 0.2px;
+}
+.production-card .card-desc {
+  left: 14px;
+  bottom: 14px;
+  color: #EEEFEF;
+  opacity: 0.9;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.2;
+  max-width: 90%;
+  text-align: left;
+}
+
+/* Optional: gentle zoom on back image to match front */
+.production-card:hover .back .back-image {
+  transform: scale(1.04);
+}
+
+/* Flow content under title: meta + description (left aligned) */
+.production-card .back .back-content {
+  position: absolute;
+  top: 70px;         /* increased space below the title */
+  left: 14px;
+  right: 14px;
+  padding: 0 0 14px;
+  text-align: left;
+  z-index: 2;        /* above back image */
+}
+
+.production-card .back .card-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  text-align: left;
+  margin-bottom: 20px;  /* space between meta and description */
+}
+
+.production-card .back .meta-line {
+  font-weight: 600;     /* bold but smaller */
+  font-size: 1.05rem;
+  line-height: 1.25;
+  text-align: left;
+}
+
+.production-card .back .meta-label {
+  margin-right: 6px;
+  opacity: 0.95;
+}
+
+.production-card .back .meta-value {
+  opacity: 0.95;
+}
+
+/* Back description in normal flow, left aligned */
+.production-card .back .card-desc {
+  position: static;     /* flows beneath meta inside back-content */
+  margin-top: 10px;
+  text-align: left;
+}
+
+/* Narrow, centered marquee override */
+.homepage .clients-marquee {
+  width: 100vw !important;  /* Full viewport width */
+  margin-left: calc(50% - 50vw) !important;
+  margin-right: calc(50% - 50vw) !important;
+}
+
+/* animated TV noise overlay on front images */
+.production-card .front .card-noise {
+  position: absolute;
+  inset: 0;
+  z-index: 1;                 /* above the image, below title/logo */
+  pointer-events: none;
+  opacity: 0.18;              /* reduced intensity */
+  background: none;           /* removed noise background */
+  /* animation removed to save CPU resources */
+}
+
+/* Noise animation keyframes removed to save CPU resources */

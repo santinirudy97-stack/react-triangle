@@ -1,0 +1,87 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter Tight', sans-serif;
+  background: #F2F2F2;
+  color: #231F20;
+  overflow-x: hidden;
+}
+
+.App {
+  min-height: 100vh;
+  background: #F2F2F2;
+}
+
+/* Sticky Header */
+.sticky-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: calc(12px - (2px * var(--header-progress, 0))) var(--page-gutter);
+  background: transparent;
+  backdrop-filter: blur(calc(20px * (1 - var(--header-progress, 0))));
+  -webkit-backdrop-filter: blur(calc(20px * (1 - var(--header-progress, 0))));
+  z-index: 1000;
+  border-bottom: calc(1px * (1 - var(--header-progress, 0))) solid rgba(34, 34, 34, calc(0.08 * (1 - var(--header-progress, 0))));
+  transition: all 0.1s ease-out;
+  width: 100vw;
+  max-width: 100vw;
+  overflow: hidden;
+}
+
+/* Remove collapsed state as we're using progressive styling */
+
+.header-logo {
+  display: flex;
+  align-items: center;
+}
+
+.header-logo img {
+  height: 28px;
+  width: auto;
+  transition: all 0.1s ease-out;
+}
+
+.header-logo:hover img {
+  transform: scale(1.02);
+}
+
+.header-contact-button {
+  font-family: 'Inter Tight', sans-serif;
+  font-weight: 400;
+  font-size: 1.1rem;
+  color: #222222;
+  background: transparent;
+  padding: 4px 0;
+  text-decoration: none;
+  transform: scale(1);
+  transition: all 0.1s ease-out;
+  opacity: 1;
+}
+
+.sticky-header.collapsed .header-contact-button {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.header-contact-button:hover {
+  transform: scale(1.02);
+}
+
+.header-contact-button:focus-visible {
+  outline: 2px solid #000;
+  outline-offset: 2px;
+}
+
+/* Legacy contact button - keep for backwards compatibility but hide */
+.contact-button {
+  display: none;
+}
